@@ -1,0 +1,35 @@
+server:
+  port: 11113
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  application:
+    name: oss
+  profiles:
+    active: dev
+
+feign:
+  hystrix:
+    enabled: false
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+---
+# 开发配置
+spring:
+  profiles: dev
+
+## 日志
+#logging:
+#  path: C:/Desktop/dmuser/oss            #.C:/Desktop/dmuser/oss
+#
+#server:
+#  tomcat:
+#    basedir: D:/logs
+
+
+---
