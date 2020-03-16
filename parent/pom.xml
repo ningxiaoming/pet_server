@@ -1,5 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.pet</groupId>
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -8,32 +12,59 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
-        <lombok.version>1.16.20</lombok.version>
+        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <mybatis-plus.version>3.0-RELEASE</mybatis-plus.version>
+        <jwt.version>3.2.0</jwt.version>
         <swagger.version>2.9.2</swagger.version>
-
+        <lombok.version>1.16.10</lombok.version>
+        <fastdfs.version>1.26.2</fastdfs.version>
+        <elasticsearch.version>6.2.4</elasticsearch.version>
+        <jest.version>2.0.0</jest.version>
+        <sdk.version>2.1.0</sdk.version>
+        <feign-form.version>3.2.2</feign-form.version>
+        <druid.version>1.1.13</druid.version>
+        <!--  <codingapi.txlcn.version>5.0.2.RELEASE</codingapi.txlcn.version>-->
     </properties>
 
     <dependencyManagement>
-
         <dependencies>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-extension</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -45,7 +76,24 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
-            <!-- spring-cloud主版本管理  -->
+            <!-- <dependency>
+                 <groupId>com.codingapi.txlcn</groupId>
+                 <artifactId>txlcn-tc</artifactId>
+                 <version>${codingapi.txlcn.version}</version>
+             </dependency>
+
+             <dependency>
+                 <groupId>com.codingapi.txlcn</groupId>
+                 <artifactId>txlcn-tm</artifactId>
+                 <version>${codingapi.txlcn.version}</version>
+             </dependency>
+
+             <dependency>
+                 <groupId>com.codingapi.txlcn</groupId>
+                 <artifactId>txlcn-txmsg-netty</artifactId>
+                 <version>${codingapi.txlcn.version}</version>
+             </dependency>-->
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -53,17 +101,69 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- lombok主版本管理  -->
+
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastdfs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <!--elasticsearch-->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <!-- jest -->
+            <dependency>
+                <groupId>io.searchbox</groupId>
+                <artifactId>jest</artifactId>
+                <version>${jest.version}</version>
+            </dependency>
+
+            <!-- feign改造支持多文件上传 -->
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form</artifactId>
+                <version>${feign-form.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form-spring</artifactId>
+                <version>${feign-form.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://192.168.1.102:8081/repository/maven-releases/</url>
+            <name>mao-releases</name>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>mao-snapshots</name>
+            <url>http://192.168.1.102:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
 
 </project>

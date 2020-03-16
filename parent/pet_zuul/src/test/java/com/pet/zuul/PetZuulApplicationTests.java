@@ -1,4 +1,4 @@
-package com.example.pet_zuul;
+package com.pet.zuul;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

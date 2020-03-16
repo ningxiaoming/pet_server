@@ -1,0 +1,37 @@
+server:
+  port: 11111
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  application:
+    name: pet_zuul
+  profiles:
+    active: dev
+
+
+
+
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+
+zuul:
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000
+
+
+---
+# 开发
+spring:
+  profiles: dev
