@@ -1,0 +1,38 @@
+
+server:
+  port: 9001
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: pet_user
+  profiles:
+    active: dev
+
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      minimum-idle: 5
+#      maximum-pool-size: 15
+#      auto-commit: true
+#      idle-timeout: 30000
+#      pool-name: userHikariCP
+#      max-lifetime: 1800000
+#      connection-timeout: 30000
+#      connection-test-query: SELECT 1
+
+
+
+---
+
+# 开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pet?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 12345678
