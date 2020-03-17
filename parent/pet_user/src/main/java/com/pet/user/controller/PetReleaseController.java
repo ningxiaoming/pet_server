@@ -5,6 +5,7 @@ import com.pet.common.entity.PetPets;
 import com.pet.common.entity.PetRelease;
 import com.pet.common.model.ResultInfo;
 import com.pet.user.service.IPetReleaseService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-03-14
  */
 @RestController
-//@RequestMapping("/user/pet-release")
+@Api(tags = "宠物发布查询")
 public class PetReleaseController {
 
     private final IPetReleaseService petReleaseService;

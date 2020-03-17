@@ -76,6 +76,9 @@ public class PetPetsServiceImpl extends ServiceImpl<PetPetsMapper, PetPets> impl
 
     @Override
     public ResultInfo upPets(PetPets petPets) {
+        if (StringUtils.isBlank(petPets.getPetId())){
+            return addPets(petPets);
+        }
         try {
             petPetsMapper.updateById(petPets);
         }catch (Exception e){
