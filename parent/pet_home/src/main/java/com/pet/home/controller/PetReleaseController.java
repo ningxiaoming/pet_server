@@ -4,6 +4,7 @@ package com.pet.home.controller;
 import com.github.pagehelper.PageHelper;
 import com.pet.common.model.ResultInfo;
 import com.pet.home.service.IPetReleaseService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-03-14
  */
 @RestController
-//@RequestMapping("/pet_home/pet-release")
+@Api(tags = "首页")
 public class PetReleaseController {
 
     private final IPetReleaseService petReleaseService;

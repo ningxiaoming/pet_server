@@ -1,1 +1,40 @@
+server:
+  port: 11114
+spring:
+  application:
+    name: home
+  profiles:
+    active: dev
 
+feign:
+  hystrix:
+    enabled: false
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+---
+# 开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.60.79:3306/pet?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: wxyj
+    password: 123456
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:80/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+
+---
