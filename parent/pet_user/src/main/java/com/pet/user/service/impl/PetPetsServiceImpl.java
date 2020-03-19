@@ -65,10 +65,12 @@ public class PetPetsServiceImpl extends ServiceImpl<PetPetsMapper, PetPets> impl
         }
         QueryWrapper<PetPets> qw = new QueryWrapper<>();
         qw.eq("user_id",userId);
+        qw.eq("user_id",userId);
         List<PetPets> petPets = null;
         try {
            petPets = petPetsMapper.selectList(qw);
         }catch (Exception e){
+            e.printStackTrace();
             return ResultInfo.failure(500,"未知错误，修改失败");
         }
         return ResultInfo.success(200,"查询成功",petPets);

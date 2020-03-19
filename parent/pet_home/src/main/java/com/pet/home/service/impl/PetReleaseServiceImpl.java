@@ -1,6 +1,7 @@
 package com.pet.home.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.pet.common.entity.PetBanner;
 import com.pet.common.entity.PetRelease;
 import com.pet.common.model.ResultInfo;
 import com.pet.home.mapper.PetReleaseMapper;
@@ -43,8 +44,15 @@ public class PetReleaseServiceImpl extends ServiceImpl<PetReleaseMapper, PetRele
         try {
             petReleases = petReleaseMapper.selectList(qw);
         }catch (Exception e){
+            e.printStackTrace();
             return ResultInfo.failure(500,"系统错误");
         }
         return ResultInfo.success(200,"查询成功",petReleases);
+    }
+
+    @Override
+    public ResultInfo getBanner() {
+        List<PetBanner> banners = petReleaseMapper.getBanner();
+        return ResultInfo.success(200,"查询成功",banners);
     }
 }

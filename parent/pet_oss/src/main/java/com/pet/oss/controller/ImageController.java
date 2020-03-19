@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/oss")
+//@RequestMapping("/oss")
 @Api(tags = "oss")
 public class ImageController {
 
@@ -30,6 +30,19 @@ public class ImageController {
     @ApiOperation(value = " 上传文件", notes = " 上传文件", httpMethod = "POST")
     public ResultInfo uploadImg(@RequestParam("file") MultipartFile image) {
         return imageService.uploadImage(image);
+    }
+    /**
+     * 文件上传到oss
+     *
+     * @param banner
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("/banner")
+    @ResponseBody
+    @ApiOperation(value = " 上传banner", notes = " 上传banner", httpMethod = "POST")
+    public ResultInfo uploadBanner(@RequestParam("file") MultipartFile banner) {
+        return imageService.uploadBanner(banner);
     }
 
     /**

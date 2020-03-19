@@ -9,6 +9,16 @@ spring:
   profiles:
     active: dev
 
+mybatis-plus:
+  # xml地址
+  mapper-locations: classpath*:mapper/*/*Mapper.xml
+  # 实体扫描，多个package用逗号或者分号分隔 #自己的实体类地址
+  type-aliases-package: com.pet.common.entity
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰命名法
+    map-underscore-to-camel-case: true
 #  datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
 #    type: com.zaxxer.hikari.HikariDataSource
@@ -43,6 +53,6 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:80/eureka
+      defaultZone: http://localhost:90/eureka
     fetch-registry: true
     register-with-eureka: true

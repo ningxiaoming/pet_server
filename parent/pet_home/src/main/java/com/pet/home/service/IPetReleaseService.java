@@ -16,5 +16,6 @@ public interface IPetReleaseService extends IService<PetRelease> {
 
     ResultInfo getPetRelease(String releaseId);
     ResultInfo getAllPetRelease();
+    ResultInfo getBanner();
 
 }

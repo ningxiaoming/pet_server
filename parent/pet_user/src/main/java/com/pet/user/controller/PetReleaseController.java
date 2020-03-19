@@ -28,8 +28,8 @@ public class PetReleaseController {
 
 
 
-    @PutMapping("/release")
-    @ApiOperation(value = " 添加一个宠物发布信息", notes = " 添加一个宠物发布信息", httpMethod = "PUT")
+    @PostMapping("/release")
+    @ApiOperation(value = " 添加一个宠物发布信息", notes = " 添加一个宠物发布信息", httpMethod = "POST")
     public ResultInfo addPetRelease(PetRelease petRelease) {
         ResultInfo resultInfo = petReleaseService.addPetRelease(petRelease);
         return resultInfo;
@@ -46,7 +46,7 @@ public class PetReleaseController {
         ResultInfo resultInfo = petReleaseService.getPetReleaseByUserId(userId);
         return resultInfo;
     }
-    @PostMapping("/release")
+    @PostMapping("/release/up")
     @ApiOperation(value = " 编辑一个宠物发布信息", notes = " 编辑一个宠物发布信息", httpMethod = "POST")
     public ResultInfo upPetRelease(PetRelease petRelease) {
         ResultInfo resultInfo = petReleaseService.upPetRelease(petRelease);

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pet.user.mapper.PetInfoMapper">
-
+    <select id="selectListByPetIdAndDate" resultType="com.pet.common.model.PetInfoModel" parameterType="String">
+        select item_id,pet_id,pet_action,date_format(action_time,'%H:%i:%S') as action_time,action_info,action_date
+        from pet_info
+        where pet_id = #{petId} and action_date = #{actionDate}
+    </select>
+    <select id="findDatesByPetIdAndDate" resultType="com.pet.common.model.PetInfoModel" parameterType="String">
+        select DISTINCT action_date,pet_id
+        from pet_info
+        where pet_id = #{petId} and action_date &lt;=#{actionDate} ORDER BY action_date limit 10
+    </select>
 </mapper>

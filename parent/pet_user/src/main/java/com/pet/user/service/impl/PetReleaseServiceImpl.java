@@ -3,10 +3,13 @@ package com.pet.user.service.impl;
 import com.pet.common.entity.PetRelease;
 import com.pet.common.model.IdWorker;
 import com.pet.common.model.ResultInfo;
+import com.pet.common.utils.PetUtil;
 import com.pet.user.mapper.PetReleaseMapper;
 import com.pet.user.service.IPetReleaseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -28,12 +31,13 @@ public class PetReleaseServiceImpl extends ServiceImpl<PetReleaseMapper, PetRele
     public ResultInfo addPetRelease(PetRelease petRelease) {
         IdWorker idWorker = new IdWorker(1,1,1);
         petRelease.setReleaseId(String.valueOf(idWorker.nextId()));
+        petRelease.setReleaseDate(PetUtil.getDate());
         try {
             petReleaseMapper.insert(petRelease);
         }catch (Exception e){
             return ResultInfo.failure(500,"系统错误");
         }
-        return null;
+        return ResultInfo.failure(200,"添加成功",petRelease);
     }
 
     @Override

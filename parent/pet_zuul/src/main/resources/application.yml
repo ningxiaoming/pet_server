@@ -1,10 +1,17 @@
 server:
   port: 11111
 spring:
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
+#  cloud:
+#    consul:
+#      discovery:
+#        instance-id: ${spring.application.name}:${server.port}
+#        prefer-ip-address: true
+#        health-check-interval: 10s
+#        hostname: ${spring.application.name}
+#        service-name: ${spring.application.name}
+#        enabled: true
+#      host: localhost
+#      port: 8500
   application:
     name: pet_zuul
   profiles:
@@ -43,6 +50,6 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:80/eureka
+      defaultZone: http://localhost:90/eureka
     fetch-registry: true
     register-with-eureka: true

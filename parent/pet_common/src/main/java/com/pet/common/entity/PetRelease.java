@@ -1,10 +1,14 @@
 package com.pet.common.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -19,8 +23,13 @@ import java.time.LocalDateTime;
 public class PetRelease  {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId(value = "release_id")
     private String releaseId;
+
+
+    private String userId;
+    private String userName;
+    private String userPhone;
 
     /**
      * 发布类型；例如：买卖；托管；配偶
@@ -51,7 +60,26 @@ public class PetRelease  {
     /**
      * 发布时间
      */
-    private LocalDateTime releaseTime;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date releaseDate;
+
+    /**
+        省
+     */
+    private String releaseProvince;
+    /**
+        市
+    */
+    private String releaseCity;
+    /**
+        区
+    */
+    private String releaseArea;
+    /**
+        详细地址
+    */
+    private String releaseAddress;
 
 
 }

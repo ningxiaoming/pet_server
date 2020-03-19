@@ -3,9 +3,25 @@ server:
 spring:
   application:
     name: oss
+#  cloud:
+#    consul:
+#      discovery:
+#        instance-id: ${spring.application.name}:${server.port}
+#        prefer-ip-address: true
+#        health-check-interval: 10s
+#        hostname: ${spring.application.name}
+#        service-name: ${spring.application.name}
+#        enabled: true
+#        health-check-path: /health
+#      host: localhost
+#      port: 8500
   profiles:
     active: dev
-
+zuul:
+  routes:
+    user:
+      path: /oss/**
+      serviceId: pet_zuul
 feign:
   hystrix:
     enabled: false
@@ -19,6 +35,7 @@ ribbon:
 spring:
   profiles: dev
 
+
 eureka:
   instance:
     lease-expiration-duration-in-seconds: 30
@@ -26,7 +43,7 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:80/eureka
+      defaultZone: http://localhost:90/eureka
     fetch-registry: true
     register-with-eureka: true
 

@@ -39,9 +39,9 @@ public class PetPetsController {
         return resultInfo;
     }
     @GetMapping("/pets")
-    @ApiOperation(value = " 查询一个宠物信息", notes = " 查询一个宠物信息", httpMethod = "GET")
-    public ResultInfo getAllPets() {
-        String userId = "123";
+    @ApiOperation(value = " 查询用户下的宠物列表", notes = " 查询用户下的宠物列表", httpMethod = "GET")
+    public ResultInfo getAllPets(String userId) {
+//        String userId = "123";
         ResultInfo resultInfo = petPetsService.getAllPets(userId);
         return resultInfo;
     }

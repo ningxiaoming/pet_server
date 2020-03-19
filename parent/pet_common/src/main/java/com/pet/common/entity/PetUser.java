@@ -1,5 +1,6 @@
 package com.pet.common.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 public class PetUser {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId(value = "user_id")
     private String userId;
 
     private String wxId;

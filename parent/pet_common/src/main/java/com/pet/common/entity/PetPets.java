@@ -1,9 +1,13 @@
 package com.pet.common.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -19,6 +23,7 @@ public class PetPets  {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "pet_id")
     private String petId;
 
     /**
@@ -45,7 +50,9 @@ public class PetPets  {
     /**
      * 出生日期
      */
-    private LocalDateTime petBirthday;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date petBirthday;
 
     private LocalDateTime addTime;
 
@@ -58,6 +65,11 @@ public class PetPets  {
      * 是否主页显示宠物：0表示不是
      */
     private Integer isHome;
+    /**
+     * 此宠物是否已经发布：1表示已经发布
+     */
+    private Integer isRelease;
+
 
     /**
      * 宠物品种：金毛，阿拉斯加  等
