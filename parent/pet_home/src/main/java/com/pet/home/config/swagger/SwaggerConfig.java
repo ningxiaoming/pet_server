@@ -1,4 +1,4 @@
-package com.pet.home.swagger;
+package com.pet.home.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

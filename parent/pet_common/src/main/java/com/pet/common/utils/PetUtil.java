@@ -24,6 +24,11 @@ public class PetUtil {
         return petTask;
     }
     //将字符串类型的日期转化成LocalDateTime
+    public static String currentTimeMillisToDateString(long currentTimeMillis){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(currentTimeMillis);
+    }
+    //将字符串类型的日期转化成LocalDateTime
     public static LocalDateTime getLocalDateTime(String localDateTime){
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDateTime.parse(localDateTime, df);

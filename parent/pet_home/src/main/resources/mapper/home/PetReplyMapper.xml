@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pet.home.mapper.PetReplyMapper">
+
+    <insert id="transReplyFromRedis2DB" parameterType="list" >
+        replace into pet_reply
+        ( `rp_id`, `qt_id`, `user_id`, `user_name`, `user_image`, `rp_item`, `comment_count`, `like_count`, `rp_status`, `create_time`, `up_time` )
+        VALUES
+        <foreach collection="list" item="rp" separator=",">
+            ( #{rp.rpId},#{rp.qtId},#{rp.userId},
+            #{rp.userName},#{rp.userImage},#{rp.rpItem},
+            #{rp.commentCount},#{rp.likeCount},#{rp.rpStatus},
+            #{rp.createTime},#{rp.upTime}
+            )
+        </foreach>
+    </insert>
+</mapper>
