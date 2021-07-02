@@ -29,7 +29,7 @@
         <swagger.version>2.9.2</swagger.version>
         <lombok.version>1.16.10</lombok.version>
         <fastdfs.version>1.26.2</fastdfs.version>
-        <elasticsearch.version>6.2.4</elasticsearch.version>
+        <elasticsearch.version>6.8.15</elasticsearch.version>
         <jest.version>2.0.0</jest.version>
         <sdk.version>2.1.0</sdk.version>
         <feign-form.version>3.2.2</feign-form.version>
